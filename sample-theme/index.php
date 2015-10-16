@@ -12,6 +12,7 @@
  * @package Sample_Theme
  */
 
+//this is a change to my file
 get_header(); ?>
 
 	<div id="primary" class="content-area">
