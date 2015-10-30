@@ -12,7 +12,6 @@
  * @package Sample_Theme
  */
 
-//this is a change to my file
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -27,17 +26,33 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php /* Start the Loop */ ?>
-			<?php query_posts( 'tag=practice'); ?>
+			
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>					
 
-
-					
-
-			<?php get_template_part( 'template-parts/content', 'newProject'); ?>
+				<?php get_template_part( 'template-parts/content', 'newProject'); ?>
 
 
 			<?php endwhile; ?>
+
+
+			<H2> TESTING </H2>
+
+<div id ='myPlugin'>
+
+     <?php rewind_posts(); ?>
+
+     <?php
+     	$args = array( 'post_type' => 'portfolio_item', 'posts_per_page' => 10 );
+		$loop = new WP_Query( $args );
+		while ( $loop->have_posts() ) : $loop->the_post();
+		    the_title();
+		    echo '<div class="entry-content">';
+		    the_content();
+		    echo '</div>';
+		endwhile;
+?>
+</div>
 
 			<?php the_posts_navigation(); ?>
 
